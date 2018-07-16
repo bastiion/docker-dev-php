@@ -1,4 +1,4 @@
-# LAMP en Docker
+# LAMP via Docker
 
 La technologie Docker permet au développeur de télécharger et installer un environnement de développement prêt à l'emploi, tout fait qui tournera en machine virtuelle sur ta machine, donc faisant cohabiter le serveur de développement dans l' OS du développeur sans devoir chipoter avec les permissions ou modifier les fichiers-systèmes de son ordinateur. Merci Docker, tu es le bien.
 
@@ -21,4 +21,4 @@ $ cd docker-lamp
 $ docker-compose up --build -d 
 ```
 
-Et voilà!
+Et voilà! Ton serveur est accessible à l'adresse : http://localhost:8000
