@@ -20,7 +20,10 @@ git checkout $(git describe --abbrev=0 --tags)
 cd docker-lamp 
 
 // Lancer la machine virtuelle. Il faut parfois attendre 1 ou 2 minutes, surtout la première fois (il doit tout télécharger. Les fois suivantes sont plus rapides).
-docker-compose up --build -d 
+docker-compose up -d 
 ```
 
 Et voilà!  Ton serveur est accessible à l'adresse : http://localhost:2018 et phpmyadmin à l'adresse: http://localhost:8081/
+
+## Aller plus loin
+- Si tu mets un fichier *.sql dans le dossier `data` il sera automatiquement importé dans la base de données lors du prochain lancement de `docker-compose up` .
