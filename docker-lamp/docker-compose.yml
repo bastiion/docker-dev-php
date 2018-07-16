@@ -1,22 +1,60 @@
-version: '2'
+version: '3'
 
 services:
-   db:
-     build: ./mysql
-     volumes:
-       - db_data:/var/lib/mysql
-     environment:
-       MYSQL_ROOT_PASSWORD: root
-   php:
-    image: nanoninja/php-fpm:7.1
-    ports:
-      - '8000:80'
-    restart: always
+  web:
+    image: webdevops/apache:latest
     volumes:
-       - ./log/apache2/error.log:/var/log/apache2/error.log
-       - ./log/apache2/access.log:/var/log/apache2/access.log
-       - ./html:/var/www/html
+        - "./htdocs:/var/www/html"
+    ports:
+        - "2018:80"
+    environment:
+        - NGINX_HOST=${NGINX_HOST}
+        - WEB_PHP_SOCKET=php:9000
+        - WEB_DOCUMENT_ROOT=/var/www/html
+    restart: always
     depends_on:
-      - db
-volumes:
-    db_data:
+        - php
+        - mysqldb
+    volumes:
+        - ./log/apache2:/var/log/apache2
+        - ./htdocs:/var/www/html
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    ports:
+        - "8081:80"
+    environment:
+        - PMA_ARBITRARY=1
+        - PMA_HOST=${MYSQL_HOST}
+        - PMA_USER=${MYSQL_ROOT_USER}
+        - PMA_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    restart: always
+    depends_on:
+        - mysqldb
+
+  mysqldb:
+      image: mysql
+      container_name: ${MYSQL_HOST}
+      restart: always
+      env_file:
+          - ".env"
+      environment:
+          - MYSQL_DATABASE=${MYSQL_DATABASE}
+          - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+          - MYSQL_USER=${MYSQL_USER}
+          - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      ports:
+          - "8989:3306"
+      volumes:
+          - ./data:/docker-entrypoint-initdb.d
+          # Here we’re telling the db container to look in that data folder for a .sql export 
+          # and to use it to populate our database.
+  php:
+    image: nanoninja/php-fpm:latest
+    restart: always
+    expose:
+        - 9000
+    volumes:
+        - ./log/php:/var/log/php
+        - ./htdocs:/var/www/html

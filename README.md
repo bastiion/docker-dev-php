@@ -23,4 +23,4 @@ cd docker-lamp
 docker-compose up --build -d 
 ```
 
-Et voilà! Ton serveur est accessible à l'adresse : http://localhost:8000
+Et voilà!  Ton serveur est accessible à l'adresse : http://localhost:2018 et phpmyadmin à l'adresse: http://localhost:8081/
