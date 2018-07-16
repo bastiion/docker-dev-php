@@ -14,7 +14,7 @@ Pour voir ce qu'installe ce package-ci, lis le fichier docker-compose.yml.
 
 ```sh
 // Cloner ce repository
-git checkout $(git describe --abbrev=0 --tags)
+git clone git@github.com:becodeorg/docker-compose-lamp-stack.git
 
 // Entrer dans le dossier de travail
 cd docker-lamp 
@@ -23,4 +23,6 @@ cd docker-lamp
 docker-compose up --build -d 
 ```
 
-Et voilà!  Ton serveur est accessible à l'adresse : http://localhost:2018 et phpmyadmin à l'adresse: http://localhost:8081/
+Et voilà!  Ton serveur Apache est accessible à l'adresse : http://localhost:2018/ et PhpMyAdmin à l'adresse: http://localhost:8081/
+
+Travaille dans le dossier `./htdocs` : tout ce que tu y fais / mets est automatiquement accessible via l'adresse du serveur apache.
