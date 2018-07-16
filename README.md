@@ -14,11 +14,13 @@ Pour voir ce qu'installe ce package-ci, lis le fichier docker-compose.yml.
 
 ```sh
 // Cloner ce repository
-$ git checkout $(git describe --abbrev=0 --tags)
+git checkout $(git describe --abbrev=0 --tags)
+
 // Entrer dans le dossier de travail
-$ cd docker-lamp 
+cd docker-lamp 
+
 // Lancer la machine virtuelle. Il faut parfois attendre 1 ou 2 minutes, surtout la première fois (il doit tout télécharger. Les fois suivantes sont plus rapides).
-$ docker-compose up --build -d 
+docker-compose up --build -d 
 ```
 
 Et voilà! Ton serveur est accessible à l'adresse : http://localhost:8000
