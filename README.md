@@ -8,16 +8,17 @@ Pour voir ce qu'installe ce package-ci, lis le fichier docker-compose.yml.
 
 1. Si vous êtes sur Mac ou Windows, veillez à d'abord installer Docker Desktop: https://docs.docker.com/install/ 
 1. Installer Docker: https://www.docker.com/docker-ubuntu  
-1. Installer Docker Compose : mpose/ins
-
+1. Installer Docker Compose : https://docs.docker.com/compose/install/
 
 ## Utilisation
 
-You are up and running in three simple steps:
 ```sh
 // Cloner ce repository
 $ git checkout $(git describe --abbrev=0 --tags)
+// Entrer dans le dossier de travail
 $ cd docker-lamp 
+// Lancer la machine virtuelle. Il faut parfois attendre 1 ou 2 minutes, surtout la première fois (il doit tout télécharger. Les fois suivantes sont plus rapides).
 $ docker-compose up --build -d 
 ```
-Et voila!
+
+Et voilà!
