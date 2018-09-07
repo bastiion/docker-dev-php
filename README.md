@@ -23,7 +23,7 @@ cd docker-lamp
 docker-compose up -d 
 ```
 
-Et voilà!  Ton serveur Apache est accessible à l'adresse : http://localhost:2018/ et PhpMyAdmin à l'adresse: http://localhost:8081/
+Et voilà!  Ton serveur Nginx est accessible à l'adresse : http://localhost:2018/ et PhpMyAdmin à l'adresse: http://localhost:8081/
 
 Tu peux à présent travailler dans le dossier `./htdocs` : tout ce que tu y fais / mets est automatiquement accessible via l'adresse du serveur apache.
 
